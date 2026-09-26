@@ -1,0 +1,8 @@
+[package]
+name = "lux-rs"
+version = "0.1.0"
+edition = "2021"
+description = "Fast, lightweight video downloader in pure Rust inspired by lux/you-get"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
