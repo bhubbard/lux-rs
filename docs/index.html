@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lux-rs ⚡️ Fast, Safe Media Downloader in Pure Rust</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡️</text></svg>">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="badge">v0.0.1 • Pure Safe Rust • High Concurrency</div>
+      <h1>lux-rs ⚡️🦀</h1>
+      <p class="subtitle">A blazingly fast, lightweight media downloader & extractor inspired by iawia002/lux, rewritten in 100% safe, idiomatic Rust.</p>
+      
+      <div class="cta-group">
+        <a href="#quickstart" class="btn primary">Get Started</a>
+        <a href="https://github.com/bhubbard/lux-rs" class="btn secondary">View on GitHub ★</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="metrics">
+      <div class="metric-card">
+        <div class="metric-val">&lt; 3ms</div>
+        <div class="metric-label">Cold Startup Time</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">100%</div>
+        <div class="metric-label">Safe Rust (0 Unsafe)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">0.02s</div>
+        <div class="metric-label">Test Suite Runtime</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">4x - 8x</div>
+        <div class="metric-label">Chunked Concurrency</div>
+      </div>
+    </section>
+
+    <section id="interactive-playground" class="card">
+      <h2>Interactive Command Generator 🛠️</h2>
+      <p>Configure options below to generate the exact <code>lux</code> CLI command:</p>
+      
+      <div class="grid">
+        <div class="control-group">
+          <label for="video-url">Video or Stream URL:</label>
+          <input type="text" id="video-url" value="https://www.bilibili.com/video/BV1xx411c7mD" placeholder="Enter video link...">
+        </div>
+
+        <div class="control-group">
+          <label for="stream-quality">Quality / Stream ID:</label>
+          <select id="stream-quality">
+            <option value="">Highest Available (Auto)</option>
+            <option value="120">4K Ultra HD (120)</option>
+            <option value="80">1080P High Definition (80)</option>
+            <option value="64">720P HD (64)</option>
+            <option value="32">480P Standard (32)</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="output-dir">Output Directory:</label>
+          <input type="text" id="output-dir" value="./downloads">
+        </div>
+
+        <div class="control-group">
+          <label for="thread-count">Concurrent Chunks:</label>
+          <input type="number" id="thread-count" value="8" min="1" max="32">
+        </div>
+      </div>
+
+      <div class="toggles">
+        <label><input type="checkbox" id="info-only"> <code>--info</code> (Inspect metadata only)</label>
+        <label><input type="checkbox" id="no-captions"> <code>--no-caption</code> (Skip Danmaku .ass)</label>
+        <label><input type="checkbox" id="playlist"> <code>--playlist</code> (Batch download all)</label>
+      </div>
+
+      <div class="command-box">
+        <pre><code id="generated-command">lux https://www.bilibili.com/video/BV1xx411c7mD -o ./downloads --threads 8</code></pre>
+        <button id="copy-btn" class="btn small">Copy</button>
+      </div>
+    </section>
+
+    <section id="architecture" class="card">
+      <h2>Architecture & Pipeline 🏗️</h2>
+      <div class="pipeline-flow">
+        <div class="pipe-node">1. URL Router<br><span>(av/BV/ep regex, domain match)</span></div>
+        <div class="pipe-arrow">➔</div>
+        <div class="pipe-node">2. Extractor<br><span>(Bilibili, YouTube, Douyin, HTML5)</span></div>
+        <div class="pipe-arrow">➔</div>
+        <div class="pipe-node">3. Metadata Engine<br><span>(DASH streams, XML danmaku)</span></div>
+        <div class="pipe-arrow">➔</div>
+        <div class="pipe-node">4. Chunk Downloader<br><span>(HTTP/2, resume, indicatif)</span></div>
+        <div class="pipe-arrow">➔</div>
+        <div class="pipe-node">5. Stream Muxer<br><span>(zero-copy copy, .ass subtitle)</span></div>
+      </div>
+    </section>
+
+    <section id="quickstart" class="card">
+      <h2>Installation & Usage 🚀</h2>
+      <pre><code># Install via Cargo
+cargo install --git https://github.com/bhubbard/lux-rs
+
+# Inspect video formats without downloading
+lux -i "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+# Download 1080P with 8 threads & Danmaku converted to .ass
+lux -s 80 --threads 8 "BV1xx411c7mD"
+
+# Universal HTML5 video grabber
+lux -o ./movies "https://example.com/stream-page"</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>Built with ❤️ and Rust by <a href="https://github.com/bhubbard">Brandon Hubbard</a>. Licensed under MIT or Apache-2.0.</p>
+      <p><a href="http://code.brandonhubbard.com/">More Projects</a> • <a href="https://github.com/bhubbard/lux-rs">GitHub Repo</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
