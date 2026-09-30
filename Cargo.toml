@@ -1,6 +1,6 @@
 [package]
 name = "lux-rs"
-version = "0.0.1"
+version = "0.1.0"
 edition = "2021"
 authors = ["Brandon Hubbard <brandon@brandonhubbard.com>"]
 description = "Blazingly fast, lightweight media downloader and extractor written in pure safe Rust, inspired by iawia002/lux"

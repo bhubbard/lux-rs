@@ -6,7 +6,7 @@ use async_trait::async_trait;
 use reqwest::header::{HeaderMap, HeaderValue, USER_AGENT};
 use scraper::Selector;
 
-#[derive(Default)]
+#[derive(Default, Debug, Clone, Copy)]
 pub struct UniversalExtractor;
 
 #[async_trait]

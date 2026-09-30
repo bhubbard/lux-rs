@@ -7,7 +7,7 @@ use reqwest::header::{HeaderMap, HeaderValue, USER_AGENT};
 use serde_json::Value;
 use std::collections::HashMap;
 
-#[derive(Default)]
+#[derive(Default, Debug, Clone, Copy)]
 pub struct DouyinExtractor;
 
 #[async_trait]

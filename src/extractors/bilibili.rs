@@ -8,7 +8,7 @@ use reqwest::header::{HeaderMap, HeaderValue, REFERER, USER_AGENT};
 use serde::Deserialize;
 use std::collections::HashMap;
 
-#[derive(Default)]
+#[derive(Default, Debug, Clone, Copy)]
 pub struct BilibiliExtractor;
 
 #[derive(Deserialize)]

@@ -18,10 +18,11 @@ pub struct ExtractOptions {
 }
 
 #[async_trait]
-pub trait Extractor: Send + Sync {
+pub trait Extractor: Send + Sync + std::fmt::Debug {
     async fn extract(&self, url: &str, options: &ExtractOptions) -> Result<Vec<VideoData>>;
 }
 
+#[derive(Debug)]
 pub struct ExtractorRegistry {
     extractors: HashMap<String, Arc<dyn Extractor>>,
     fallback: Arc<dyn Extractor>,
